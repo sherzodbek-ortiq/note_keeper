@@ -15,13 +15,13 @@ class Api::V1::NotesController < Api::V1::BaseController
 	def update
 		note = Note.find(params[:id])	
 		note.update_attributes(note_params)
-		respond_with item, json: item
+		respond_with note, json: note
 	end
 
 	private
 
 		def note_params
-			params.require(:note).permit(:id, :name, :description)			
+			params.require(:note).permit(:name, :description)			
 		end
 
 end
