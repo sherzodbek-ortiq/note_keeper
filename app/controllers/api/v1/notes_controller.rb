@@ -1,21 +1,30 @@
 class Api::V1::NotesController < Api::V1::BaseController
 
 	def index
-		respond_with Note.all
+		render json: Note.all
 	end
 
 	def create
-		respond_with :api, :v1, Note.create(note_params)
-	end
-
-	def destroy
-		respond_with Note.destroy(params[:id])
+		note = Note.new(note_params)
+		if note.save
+			render json: note
+		else
+			render json: {errors: note.errors.messages}
+		end
 	end
 
 	def update
-		note = Note.find(params[:id])	
-		note.update_attributes(note_params)
-		respond_with note, json: note
+		note = Note.find(params[:id])
+		if note.update(note_params)
+			render json: {status: 200}
+		else
+			render json: {errors: note.errors.messages}
+		end
+	end
+
+	def destroy
+		Note.destroy(params[:id])
+		render json: {status: 200}
 	end
 
 	private

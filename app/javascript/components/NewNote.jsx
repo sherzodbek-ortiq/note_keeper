@@ -33,20 +33,21 @@ class NewNote extends React.Component {
 		    'Content-Type': 'application/json',
 		  },
 		  body: JSON.stringify({
-		    name: name,
-		    description: description,
+		  	note: {
+		  	  name: name,
+		  	  description: description,
+		  	}
 		  })
 		})
 		.then((response) => response.json())
 		.then((responseJson) => {
-				console.log("Hi")
-				console.log(responseJson.errors)
 			if(!("errors" in responseJson)){
 			  this.props.reloadNotes({
 			  	id: responseJson.id,
 			  	name: this.state.name,
 			  	description: this.state.description
 			  })
+				this.props.showError("")
 			}else{
 				this.props.showError("Error has occured")
 			}

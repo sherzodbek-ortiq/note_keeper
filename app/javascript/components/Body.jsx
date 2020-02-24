@@ -48,24 +48,24 @@ class Body extends React.Component {
 		    'Accept': 'application/json',
 		    'Content-Type': 'application/json',
 		  },
-		  body: JSON.stringify(note)
+		  body: JSON.stringify({
+		  	note: note
+		  })
 		})
-		.then((response) => {
-			if(response.status == 200){
+		.then((response) => response.json())
+		.then((responseJson) => {
+			if(!("errors" in responseJson)){
     		let notes = this.state.notes.filter((note) => { return note.id != id });
     		notes.push({id: id, name: note.name, description: note.description});
     		this.setState({notes: notes });
-/*
-				fetch("/api/v1/notes.json", {
-					method: "GET"
-				})
-				.then(response => response.json())
-				.then( (response) => {
-					this.setState({ notes: response });
-				});
-*/
+				this.state.error = ""
+				this.showError("")
+
+				console.log("True")
 			}else{
-				this.state.error = "Error has occured"
+				this.showError("Error has occured")
+
+				console.log("False")
 			}
 		})
 		.catch((error) => {
@@ -81,19 +81,12 @@ class Body extends React.Component {
 		    'Content-Type': 'application/json',
 		  }
 		})
-		.then((response) => {
-			if(response.status == 204){
+		.then((response) => response.json())
+		.then((responseJson) => {
+			if(!("errors" in responseJson)){
     		let notes = this.state.notes.filter((note) => { return note.id != id });
     		this.setState({notes: notes });
-/*
-				fetch("/api/v1/notes.json", {
-					method: "GET"
-				})
-				.then(response => response.json())
-				.then( (response) => {
-					this.setState({ notes: response });
-				});
-*/
+				this.state.error = ""
 			}else{
 				this.state.error = "Error has occured"
 			}

@@ -14,6 +14,13 @@ class Note extends React.Component {
 		};
 	}
 
+	componentDidMount(){
+		this.setState({
+			name: this.props.note.name,
+			description: this.props.note.description,			
+		});
+	}
+
 	handleChange(event){
 		const name = event.target.name
 		this.setState({
@@ -23,9 +30,15 @@ class Note extends React.Component {
 
 	handleEdit(){
 		if(this.state.editable){
-			var name = this.state.name;
-			var description = this.state.description;
+			const name = this.state.name;
+			const description = this.state.description;
 			this.props.handleEdit(this.props.note.id, {name: name, description: description})
+
+			this.setState({
+				name: this.props.note.name,
+				description: this.props.note.description,			
+			});
+
 		}
 		this.setState({editable: !this.state.editable})
 	}
