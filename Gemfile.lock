@@ -239,7 +239,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
-  capybara (>= 2.15)
+  capybara (~> 3.31.0)
   factory_bot_rails (~> 5.1.1)
   faker (~> 2.10.2)
   jbuilder (~> 2.7)
@@ -249,7 +249,7 @@ DEPENDENCIES
   react-rails (~> 2.6.1)
   rspec-rails (~> 3.9)
   sass-rails (>= 6)
-  selenium-webdriver
+  selenium-webdriver (~> 3.142.7)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
