@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Note, type: :model do
 
 	before(:all) do
-		@note = create(:note)
+		@note = create(:note) # using factory_bot_rails
 	end
 
 	after(:all) do

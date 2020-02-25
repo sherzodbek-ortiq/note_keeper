@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ::Api::V1::NotesController, type: :controller do
 
 	before(:all) do
-		@note = create(:note)
+		@note = create(:note) # using factory_bot_rails
 	end
 	
 	after(:all) do
@@ -33,7 +33,7 @@ RSpec.describe ::Api::V1::NotesController, type: :controller do
 		
 	end
 
-	describe "#update" do
+	describe "PATCH #update" do
   
 		context "when note name is not empty" do
 			it "should be different" do

@@ -31,16 +31,14 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Integrate React.js with Rails views and controllers, the asset pipeline, or webpacker
 gem 'react-rails', '~> 2.6.1'
 
-# responders gem
-gem 'responders', '~> 3.0.0'
-
-# factory_bot__rails for test factories
-gem 'factory_bot_rails', '~> 5.1.1'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.9'
+  # factory_bot__rails for test factories
+  gem 'factory_bot_rails', '~> 5.1.1'
+  # faker for generating fake data
+  gem 'faker', '~> 2.10.2'
 end
 
 group :development do
