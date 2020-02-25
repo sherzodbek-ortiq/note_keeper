@@ -47,11 +47,11 @@ class Note extends React.Component {
 		var name = this.state.editable ? <input type="text" name="name" defaultValue={this.props.note.name} onChange={this.handleChange} /> : <h3>{this.props.note.name}</h3>;
 		var description = this.state.editable ? <input type="text" name="description" defaultValue={this.props.note.description} onChange={this.handleChange} /> : <p>{this.props.note.description}</p>;
 		return(
-			<div>
+			<div class="note">
 				{name}
 				{description}
-				<button onClick={() => this.props.handleDelete(this.props.note.id)}>Delete note</button>
-				<button onClick={this.handleEdit}>
+				<button class="delete-button" onClick={() => this.props.handleDelete(this.props.note.id)}>Delete note</button>
+				<button class="edit-button" onClick={this.handleEdit}>
 					{this.state.editable ? "Submit" : "Edit"}
 				</button>
 			</div>

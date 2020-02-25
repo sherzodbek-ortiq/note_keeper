@@ -99,7 +99,7 @@ class Body extends React.Component {
 	render(){
 		return(
 			<div>
-				<div>{this.state.error}</div>
+				<div id="note-error"> {this.state.error}</div>
 				<NewNote reloadNotes={this.reloadNotes} showError={this.showError} />
 				<AllNotes notes={this.state.notes} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
 			</div>
